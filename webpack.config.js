@@ -1,6 +1,5 @@
 const webpack = require("webpack")
 const path = require("path")
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const BrowserSyncPlugin = require("browser-sync-webpack-plugin");
 const WriteFilePlugin = require("write-file-webpack-plugin");
@@ -19,15 +18,12 @@ module.exports = () => ({
       new UglifyJsPlugin({
         cache: true,
         parallel: true,
-        sourceMap: true // set to true if you want JS source maps
+        sourceMap: true
       }),
       new OptimizeCSSAssetsPlugin({})
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: "./src/index.html"
-    }),
     new MiniCssExtractPlugin({
       filename: "css/main.css"
     }),
