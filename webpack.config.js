@@ -39,9 +39,10 @@ module.exports = () => ({
       $: "jquery",
       jQuery: "jquery"
     }),
-    new CopyWebpackPlugin([{ 
-      from: './src/*.html', to: './[name].html'
-    }])
+    new CopyWebpackPlugin([
+      {from: 'src/assets', to: 'assets'},
+      {from: 'src/*.html', to: '[name].html'}
+    ])
   ],
   module: {
     rules: [
@@ -71,6 +72,10 @@ module.exports = () => ({
       {
         test: /\.html$/,
         use: ["html-loader"]
+      },
+      {
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: "url-loader?limit=10000&mimetype=image/svg+xml"
       }
     ]
   }
